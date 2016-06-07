@@ -2,6 +2,8 @@ var gulp        = require('gulp');
 var browserSync = require('browser-sync');
 var sass        = require('gulp-sass');
 var prefix      = require('gulp-autoprefixer');
+var uglify      = require('gulp-uglify');
+var rename      = require('gulp-rename');
 var cp          = require('child_process');
 
 var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
@@ -40,15 +42,15 @@ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
  * Compile files from _scss into both _site/css (for live injecting) and site (for future jekyll builds)
  */
 gulp.task('sass', function () {
-    return gulp.src('_scss/main.scss')
+    return gulp.src('assets/css/mystyle.scss')
         .pipe(sass({
             includePaths: ['scss'],
             onError: browserSync.notify
         }))
         .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
-        .pipe(gulp.dest('_site/css'))
+        .pipe(gulp.dest('_site/assets/css'))
         .pipe(browserSync.reload({stream:true}))
-        .pipe(gulp.dest('css'));
+        .pipe(gulp.dest('assets/css'));
 });
 
 /**
@@ -56,12 +58,39 @@ gulp.task('sass', function () {
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
-    gulp.watch('_scss/*.scss', ['sass']);
-    gulp.watch(['*.html', '_layouts/*.html', '_posts/*'], ['jekyll-rebuild']);
+    gulp.watch('assets/css/**/*.scss', ['sass']);
+    gulp.watch(['*.html', '_layouts/*.html','_includes/*.html', '_posts/*'], ['jekyll-rebuild']);
+});
+
+/**
+ * Copy boostrap
+ *
+ * */
+gulp.task('copyframework', function () {
+    gulp.src(["bower_components/bootstrap/dist/js/*.*","bower_components/jquery/dist/*.*"])
+        .pipe(gulp.dest("assets/js"));
+
+    gulp.src(["bower_components/bootstrap/dist/css/*.*"])
+        .pipe(gulp.dest("assets/css"));
+
+    gulp.src(["bower_components/bootstrap/dist/fonts/*.*"])
+        .pipe(gulp.dest("assets/fonts"));
+});
+
+
+/**
+ * Task minify
+ *
+ * */
+gulp.task('script', function () {
+    gulp.src(["app/main.js", "!app/**/*/min.js"])
+        .pipe(rename({suffix:'.min'}))
+        .pipe(uglify())
+        .pipe(gulp.dest("app/"));
 });
 
 /**
  * Default task, running just `gulp` will compile the sass,
  * compile the jekyll site, launch BrowserSync & watch files.
  */
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['copyframework', 'browser-sync', 'watch']);
