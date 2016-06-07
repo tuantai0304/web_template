@@ -1,13 +1,15 @@
 ---
-layout: default
-title: Your New Jekyll Site
+layout: template1
+title: mysite
 ---
+<section class="header-section">
+    <div class="wrapper">
+        <a href="index.html"><div class="icon-page"></div></a>
+        <div class="icon-button"></div>
+        <div class="title-wrapper">
+            <span><h1>Paul Lapking</h1></span>
+            <h3>#User Experience #Music #Creative Direction</h3>
+        </div>
 
-<div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
+    </div>
+</section> <!--End of section header-section -->

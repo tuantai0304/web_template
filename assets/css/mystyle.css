@@ -395,5 +395,47 @@ a:visited {
   color: #009999; }
 
 /* Literal.Number.Integer.Long */
-body {
-  background-color: white; }
+.header-section {
+  width: 1600px;
+  height: 1020px;
+  margin: 0 auto;
+  background-image: url("../img/header-bg.jpeg");
+  background-position: center center;
+  background-size: cover; }
+  .header-section .wrapper {
+    width: 1170px;
+    margin: 0 auto;
+    padding-top: 85px; }
+    .header-section .wrapper::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .header-section .wrapper .icon-page {
+      height: 50px;
+      width: 43px;
+      background: url("../img/icon-page.png");
+      float: left; }
+    .header-section .wrapper .icon-button {
+      height: 65px;
+      width: 65px;
+      background: url("../img/collapse-button.png") center center, no-repeat;
+      float: right;
+      cursor: pointer; }
+    .header-section .wrapper .title-wrapper {
+      clear: both;
+      padding-top: 290px;
+      width: 570px;
+      margin: 0 auto;
+      text-align: center;
+      color: white;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+      .header-section .wrapper .title-wrapper h1 {
+        font-size: 65px;
+        text-transform: uppercase;
+        line-height: 1;
+        margin: 0 auto 30px;
+        padding: 35px 0 35px 0;
+        border-bottom: solid white 5px;
+        border-top: solid white 5px; }
+      .header-section .wrapper .title-wrapper h3 {
+        font-size: 25px; }

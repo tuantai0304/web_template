@@ -1,0 +1,53 @@
+@import "_tools/bourbon/_bourbon.scss"
+
+.header-section
+  width: 1600px
+  height: 1020px
+  margin: 0 auto
+  background:
+    image: url("../img/header-bg.jpeg")
+    position: center center
+    size: cover
+
+  .wrapper
+    width: 1170px
+    margin: 0 auto
+    padding-top: 85px
+    +clearfix
+
+    .icon-page
+      +size(43px 50px)
+      background: url("../img/icon-page.png")
+      float: left
+
+    .icon-button
+      +size(65px)
+      background: url("../img/collapse-button.png") center center, no-repeat
+      float: right
+      cursor: pointer
+
+    .title-wrapper
+      clear: both
+      padding-top: 290px
+      width: 570px
+      margin: 0 auto
+      text-align: center
+      color: white
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+
+      h1
+        font:
+          size: 65px
+        text-transform: uppercase
+        line-height: 1
+        margin: 0 auto 30px
+        padding: 35px 0 35px 0
+        border:
+          bottom:  solid white 5px
+          top:  solid white 5px
+
+      h3
+        font-size: 25px
+
+      
+
