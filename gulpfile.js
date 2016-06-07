@@ -82,12 +82,12 @@ gulp.task('copyframework', function () {
  * Task minify
  *
  * */
-gulp.task('script', function () {
-    gulp.src(["app/main.js", "!app/**/*/min.js"])
-        .pipe(rename({suffix:'.min'}))
-        .pipe(uglify())
-        .pipe(gulp.dest("app/"));
-});
+// gulp.task('script', function () {
+//     gulp.src(["app/main.js", "!app/**/*/min.js"])
+//         .pipe(rename({suffix:'.min'}))
+//         .pipe(uglify())
+//         .pipe(gulp.dest("app/"));
+// });
 
 /**
  * Default task, running just `gulp` will compile the sass,
